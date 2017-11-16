@@ -12,4 +12,5 @@ def download(url,num_retries=2):
         #     if hasattr(e,'code') and 500
 
 if __name__=='__main__':
-    download('http://httpstat.us/500')
+    # download('http://httpstat.us/500')
+    download('http://www.baidu.com')
