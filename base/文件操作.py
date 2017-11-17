@@ -1,7 +1,7 @@
 # -*-coding:utf-8 -*-
 import os
 
-f=open('text.txt','r')
+# f=open('test.txt','w')
 # f.write('hello world!')
 # content=f.read()
 # print content
