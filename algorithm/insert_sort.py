@@ -1,7 +1,7 @@
 #coding:utf-8
 
 if __name__ =='__main__':
-    I=[4,1,9,13,34,26,10,7,4]
+    I=[54,26,93,17,77,31,44,55,20]
 
     def insert_sort(I):
         for i in range(len(I)):
