@@ -1,0 +1,18 @@
+Index: 爬虫/moviedata.txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- 爬虫/moviedata.txt	(revision )
++++ 爬虫/moviedata.txt	(revision )
+@@ -0,0 +1,10 @@
++None
++None
++None
++None
++None
++None
++None
++None
++None
++None
