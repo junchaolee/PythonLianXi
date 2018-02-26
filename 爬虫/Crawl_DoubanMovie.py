@@ -75,7 +75,7 @@ if __name__=='__main__':
     k=0
     while k<=225:
         html=getHTMLText(basicUrl,k)
-        # time.sleep(2)
+        time.sleep(2)
         k+=25
         getData(html)
 
