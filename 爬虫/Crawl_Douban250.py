@@ -73,7 +73,7 @@ def getData(html):
 if __name__ == '__main__':
     #将结果输出到文件中
     output=sys.stdout#保存标准输出流
-    outputfile=open('moviedata.txt','w')
+    outputfile=open('movie_data.txt','w')
     sys.stdout=outputfile#标准输出到moviedata.txt
 
     # 设定输出的格式
