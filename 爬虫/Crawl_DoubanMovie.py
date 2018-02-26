@@ -46,6 +46,14 @@ def getData(html):
         movieScore=movieLi.find('span',attrs={'class':'rating_num'}).getText()
         data.append(movieScore)
 
+        #得到电影发行的年份
+        movieDe = movieLi.find('div', attrs={'class': 'bd'})
+        movieYe = movieDe.find('p', attrs={'class': ''}).getText()
+        movieYear = re.findall(r'\d+', movieYe)
+        # print movieYear
+        for i in movieYear:
+            data.append(i)
+
         #得到电影的评价人数
         movieEval=movieLi.find('div',attrs={'class':'star'})
         movieEvalNum=re.findall(r'\d+',str(movieEval))[-1]
@@ -58,7 +66,7 @@ def getData(html):
         else:
             data.append(u"无")#没有评论的都为无，并且得加上u，否则会报ValueError: Invalid conversion specification
 
-        print outputMode.format(data[0],data[1],data[2],data[3],unichr(12288))
+        print outputMode.format(data[0],data[1],data[2],data[3],data[4],unichr(12288))
 
 
 if __name__=='__main__':
@@ -69,8 +77,8 @@ if __name__=='__main__':
     sys.stdout=outputfile
 
 
-    outputMode= "{0:{4}<20}\t{1:^10}\t{2:^10}\t{3:{4}<10}"#:后面的{4}表示宽度不够的用第5个参数填充，chr(12288)代表中文的空格
-    print outputMode.format(u'电影名称',u'评分',u'评论人数',u'短评',unichr(12288))
+    outputMode= "{0:{5}<20}\t{1:^10}\t{2:^10}\t{3:^10}\t{4:{5}<10}"#:后面的{4}表示宽度不够的用第5个参数填充，chr(12288)代表中文的空格
+    print outputMode.format(u'电影名称',u'评分',u'年份',u'评论人数',u'短评',unichr(12288))
     basicUrl='https://movie.douban.com/top250'
     k=0
     while k<=225:
