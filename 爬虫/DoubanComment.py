@@ -78,8 +78,7 @@ def main():
     words_df = pd.DataFrame({'segment': segment})
 
     # 去掉停用词
-    stopwords = pd.read_csv("stopwords.txt", index_col=False, quoting=3, sep="\t", names=['stopword'],
-                            encoding='utf-8')  # quoting=3全不引用
+    stopwords = pd.read_csv("stopwords.txt", index_col=False, quoting=3, sep="\t", names=['stopword'],encoding='utf-8')  # quoting=3全不引用
     words_df = words_df[~words_df.segment.isin(stopwords.stopword)]
 
     # 统计词频
@@ -95,9 +94,9 @@ def main():
         temp = (key, word_frequence[key])
         word_frequence_list.append(temp)
 
-    wordcloud = wordcloud.fit_words(word_frequence_list)
+    wordcloud = wordcloud.fit_words(dict(word_frequence_list))#加了个dict()
     plt.imshow(wordcloud)
-    plt.savefig('result.jpg')
+    plt.savefig('result_comment.jpg')
 
 
 # 主函数
