@@ -44,7 +44,7 @@ for item in  movie_list:
 #     print i['id'],"---",i['name']
 
 #对列表中第一部电影《红海行动》的评论进行分析
-requrl = 'https://movie.douban.com/subject/' + play_list[1]['id'] + '/comments' +'?' +'start=0' + '&limit=20'
+requrl = 'https://movie.douban.com/subject/' + play_list[2]['id'] + '/comments' +'?' +'start=0' + '&limit=20'
 resp = urllib.urlopen(requrl)
 html_data = resp.read().decode('utf-8')
 soup = BeautifulSoup(html_data, 'html.parser')
