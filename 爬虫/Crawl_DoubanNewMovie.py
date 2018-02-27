@@ -13,7 +13,8 @@ import matplotlib.pyplot as plt
 import matplotlib
 matplotlib.rcParams['figure.figsize']=(10.0,5.0)
 from wordcloud import WordCloud#词云包
-
+import warnings
+warnings.filterwarnings('ignore')
 
 
 #解析要爬取的页面，生成html字符串
