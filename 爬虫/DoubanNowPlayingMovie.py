@@ -61,7 +61,7 @@ for item2 in comment_div_lits:
 comments=''
 for k in range(len(eachCommonList)):
     comments+=str(eachCommonList[k]).strip()#系统默认界面是ascii,中文则需要使用utf-8,设置系统编码方式
-# print comments
+    # print comments
 
 #数据清洗，去除标点符号
 filtercomments=re.sub('，|：|…|、|！|；|。|？|\d|\+|《|》|\.',"",comments)

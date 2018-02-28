@@ -1,6 +1,7 @@
 #coding:utf-8
 import warnings
 warnings.filterwarnings("ignore")
+import time
 import jieba  # 分词包
 import numpy  # numpy计算包
 import codecs  # codecs提供的open方法来指定打开的文件的语言编码，它会在读取的时候自动转换为内部unicode
@@ -20,8 +21,9 @@ from wordcloud import WordCloud  # 词云包
 
 # 分析网页函数
 def getNowPlayingMovie_list():
-    resp = urllib   .urlopen('https://movie.douban.com/nowplaying/hangzhou/')
+    resp = urllib.urlopen('https://movie.douban.com/nowplaying/hangzhou/')
     html_data = resp.read().decode('utf-8')
+    # print html_data#检测到有异常请求从你的 IP 发出
     soup = bs(html_data, 'html.parser')
     nowplaying_movie = soup.find_all('div', id='nowplaying')
     nowplaying_movie_list = nowplaying_movie[0].find_all('li', class_='list-item')
@@ -43,7 +45,7 @@ def getCommentsById(movieId, pageNum):
     else:
         return False
     requrl = 'https://movie.douban.com/subject/' + movieId + '/comments' + '?' + 'start=' + str(start) + '&limit=20'
-    print(requrl)
+    # print requrl
     resp = urllib.urlopen(requrl)
     html_data = resp.read().decode('utf-8')
     soup = bs(html_data, 'html.parser')
@@ -51,6 +53,7 @@ def getCommentsById(movieId, pageNum):
     for item in comment_div_lits:
         if item.find_all('p')[0].string is not None:
             eachCommentList.append(item.find_all('p')[0].string)
+            # print item.find_all('p')[0].string#这里显示的是正常的中文字符
     return eachCommentList
 
 
@@ -58,20 +61,30 @@ def main():
     # 循环获取第一个电影的前10页评论
     commentList = []
     NowPlayingMovie_list = getNowPlayingMovie_list()
-    for i in range(10):
+    # for d in NowPlayingMovie_list:
+    #     print d['id'],d['name']
+    for i in range(20):
         num = i + 1
         commentList_temp = getCommentsById(NowPlayingMovie_list[0]['id'], num)
+        print len(commentList_temp)
         commentList.append(commentList_temp)
+        # print commentList[i][0]
+        time.sleep(3)
 
     # 将列表中的数据转换为字符串
     comments = ''
     for k in range(len(commentList)):
-        comments = comments + (str(commentList[k])).strip()
+        # print str(commentList[k][0])
+        for m in range(len(commentList[k])):
+            comments = comments + (str(commentList[k][m])).strip()
+            # print comments
 
     # 使用正则表达式去除标点符号
-    pattern = re.compile(r'[\u4e00-\u9fa5]+')
-    filterdata = re.findall(pattern, comments)
-    cleaned_comments = ''.join(filterdata)
+    # pattern = re.compile(r'[\u4e00-\u9fa5]+')
+    # filterdata = re.findall(pattern, comments)
+    # cleaned_comments = ''.join(filterdata)
+    cleaned_comments=re.sub('，|：|…|、|！|；|。|？|\d|\+|《|》|\.',"",comments)#自己写的，没用作者的
+    # print cleaned_comments
 
     # 使用结巴分词进行中文分词
     segment = jieba.lcut(cleaned_comments)
