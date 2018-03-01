@@ -48,6 +48,7 @@ def getCommentsById(movieId, pageNum):
     # print requrl
     resp = urllib.urlopen(requrl)
     html_data = resp.read().decode('utf-8')
+    # print html_data# <title>没有访问权限</title>
     soup = bs(html_data, 'html.parser')
     comment_div_lits = soup.find_all('div', class_='comment')
     for item in comment_div_lits:
@@ -63,7 +64,7 @@ def main():
     NowPlayingMovie_list = getNowPlayingMovie_list()
     # for d in NowPlayingMovie_list:
     #     print d['id'],d['name']
-    for i in range(20):
+    for i in range(10):
         num = i + 1
         commentList_temp = getCommentsById(NowPlayingMovie_list[0]['id'], num)
         print len(commentList_temp)
