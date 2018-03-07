@@ -53,6 +53,7 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+#默认路由
 ROOT_URLCONF = 'DjgDemo.urls'
 
 TEMPLATES = [

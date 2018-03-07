@@ -7,8 +7,9 @@
 <body>
 <h1>图书列表</h1>
 <ul>
-    {%for book in list%}
+    {%for book in info%}
     <li>
+        <!--{{book.btitle}}-->
         <a href="{{book.id}}">{{book.btitle}}</a>
     </li>
     {%endfor%}

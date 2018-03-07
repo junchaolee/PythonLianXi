@@ -17,5 +17,13 @@ class HeroInfo(models.Model):
     hcontent=models.CharField(max_length=1000)
     hbook=models.ForeignKey(BookInfo)
 
+    def gender(self):
+        if self.hgender:
+            return '男'
+        else:
+            return '女'
+    gender.short_description='性别'
+
+
     def __str__(self):
         return self.hname.encode('utf-8')
