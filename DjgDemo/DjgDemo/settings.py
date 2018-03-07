@@ -1,3 +1,4 @@
+#coding:utf-8
 """
 Django settings for DjgDemo project.
 
@@ -40,7 +41,9 @@ INSTALLED_APPS = [
     'booktest',
 ]
 
-MIDDLEWARE = [
+#Exception Value: 'WSGIRequest' object has no attribute 'user'
+#产生原因为:1.10 之前为MIDDLEWARE_CLASSES,之后为MIDDLEWARE
+MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
