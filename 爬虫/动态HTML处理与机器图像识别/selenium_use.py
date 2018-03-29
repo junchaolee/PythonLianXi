@@ -9,10 +9,14 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
 #如果没有在环境变量指定PhantomJS位置
-driver=webdriver.PhantomJS(executable_path="C:\Users\januc\Desktop\phantomjs-2.1.1-windows\bin")
+driver=webdriver.PhantomJS(executable_path="./phantomjs")
 
 driver.get("http://www.baidu.com")
 
-data=driver.find_element_by_id("wrapper").text
+# data=driver.find_element_by_id("wrapper").text
 
-print data
+# print data
+
+# print driver.title
+#生成当前页面快照并保存
+driver.save_screenshot("baidu.png")
