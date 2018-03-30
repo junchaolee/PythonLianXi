@@ -24,7 +24,7 @@ form_data={
     "action":"FY_BY_CLICKBUTTION",
     "typoResult":"true"
 }
-data=urllib.urlencode(form_data)
+data=urllib.urlencode(form_data)#进行url编码处理
 
 request=urllib2.Request(url,headers=ua_header,data=data)
 response=urllib2.urlopen(request)
