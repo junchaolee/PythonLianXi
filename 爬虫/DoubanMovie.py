@@ -73,7 +73,7 @@ if __name__=='__main__':
 
     #将结果输出到文件中
     output=sys.stdout
-    outputfile=open('moviedata.txt','w')
+    outputfile=open('moviedata_201912.txt','w')
     sys.stdout=outputfile
 
 

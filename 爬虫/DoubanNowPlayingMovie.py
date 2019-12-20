@@ -92,4 +92,4 @@ for key in word_frequence:
 # wcloud = wcloud.fit_words(word_frequence_list)
 wcloud=wcloud.fit_words(dict(word_frequence_list))
 plt.imshow(wcloud)
-plt.savefig("result.jpg")
+plt.savefig("result_201912.jpg")

@@ -22,3 +22,6 @@ def shell_sort(lists):
         group=group/step
     return lists
 shell_sort(lists)
+
+
+
